@@ -5,9 +5,8 @@ try:
 
     for octet in octets:
         print(f"{octet} = {octet:08b}")
-    
-
-
 
 except:
-    pass
+    print("Invalid IPv4 address. Expected format: 0.0.0.0 to 255.255.255.255")
+
+
