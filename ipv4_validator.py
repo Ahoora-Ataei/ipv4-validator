@@ -18,9 +18,15 @@ def get_ip_class (first_octet):
     else:
         return "Unknown"
 
+
 while True:   
     try:
-        ip_address_input = ipaddress.IPv4Address(input("Enter your IP address : "))
+        raw = input("Enter your IP address : ").strip()
+    except EOFError :
+        print("\nCancelled.")
+        break
+    try:
+        ip_address_input = ipaddress.IPv4Address(raw)
         octets = ip_address_input.packed
         first_octet = octets[0]
 
@@ -29,8 +35,16 @@ while True:
 
         print(f"IP class = {get_ip_class(first_octet)}")
 
-    except ipaddress.ipAddressValueError :
-        print("Invalid IPv4 address. Expected format: 0.0.0.0 to 255.255.255.255")
-        
+    except ipaddress.AddressValueError :
+        print("\nInvalid IPv4 address. Expected format: 0.0.0.0 to 255.255.255.255\nn")
 
-
+    try:
+        user_choice = input("\nDo you want to continue? (Y)  or  (N) :\n").strip()
+    except (EOFError, KeyboardInterrupt):
+        print("\nGoodbye!\n")
+        break
+    
+    if user_choice.lower() == "n":
+        print("\nGoodbye!\n")
+        break
+    
