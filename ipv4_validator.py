@@ -36,7 +36,7 @@ while True:
         print(f"IP class = {get_ip_class(first_octet)}")
 
     except ipaddress.AddressValueError :
-        print("\nInvalid IPv4 address. Expected format: 0.0.0.0 to 255.255.255.255\nn")
+        print("\nInvalid IPv4 address. Expected format: 0.0.0.0 to 255.255.255.255\n")
 
     try:
         user_choice = input("\nDo you want to continue? (Y)  or  (N) :\n").strip()
